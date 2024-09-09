@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class EnemyIA : MonoBehaviour
+public class EnemyIA : LifeController
 {
     [Header("Movement System")]
     [SerializeField] private float speed;
@@ -20,8 +20,10 @@ public class EnemyIA : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    protected virtual void Start()
+    protected override void Start()
     {
+        base.Start();
+
         agent.speed = speed;
         agent.stoppingDistance = stoppingDistance;
 
@@ -36,6 +38,8 @@ public class EnemyIA : MonoBehaviour
 
     private void Move()
     {
+        if (isDeath) return;
+
         destiny = Point.instance.transform.position;
         agent.SetDestination(destiny);
     }
@@ -46,5 +50,7 @@ public class EnemyIA : MonoBehaviour
             anim.SetFloat("MoveSpeed", 1f);
         else
             anim.SetFloat("MoveSpeed", 0f);
+
+        anim.SetBool("IsDeath", isDeath);
     }
 }

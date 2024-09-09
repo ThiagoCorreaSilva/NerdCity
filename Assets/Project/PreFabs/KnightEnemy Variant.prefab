@@ -63,6 +63,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: KnightEnemy Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 9156360546160070916, guid: ebdc5840e6318b4478a5a8f7a82c0ad3,
+        type: 3}
+      propertyPath: m_BaseOffset
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
