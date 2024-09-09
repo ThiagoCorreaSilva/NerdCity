@@ -17,6 +17,7 @@ public class EnemyIA : LifeController
     [SerializeField] protected float attackRange;
     [SerializeField] private float attackRate;
     private float attackTime;
+    private bool pointDestroyed;
 
     [Header("NavMesh Variables")]
     [SerializeField] private Animator anim;
@@ -47,6 +48,8 @@ public class EnemyIA : LifeController
         Move();
 
         if (isFinished && !isDeath && Point.instance.gameObject.activeSelf) Attack();
+
+        if (!Point.instance.gameObject.activeSelf) pointDestroyed = true;
     }
 
     protected virtual void Attack()
@@ -77,5 +80,6 @@ public class EnemyIA : LifeController
             anim.SetFloat("MoveSpeed", 0f);
 
         anim.SetBool("IsDeath", isDeath);
+        anim.SetBool("PointDestroyed", pointDestroyed);
     }
 }
