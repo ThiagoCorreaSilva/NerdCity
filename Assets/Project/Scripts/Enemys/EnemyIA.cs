@@ -7,13 +7,20 @@ using UnityEngine.AI;
 public class EnemyIA : LifeController
 {
     [Header("Movement System")]
-    [SerializeField] private float speed;
-    [SerializeField] private float stoppingDistance;
+    [SerializeField] protected float speed;
+    [SerializeField] protected float stoppingDistance;
+
+    [Header("Attack System")]
+    [SerializeField] protected float attackDamage;
+    [SerializeField] protected float attackRange;
+    [SerializeField] private float attackRate;
+    private float attackTime;
 
     [Header("NavMesh Variables")]
     [SerializeField] private Animator anim;
     private NavMeshAgent agent;
     private Vector3 destiny;
+    private bool isFinished;
 
     protected virtual void Awake()
     {
@@ -34,6 +41,16 @@ public class EnemyIA : LifeController
     {
         Animations();
         Move();
+
+        if (isFinished && !isDeath) Attack();
+    }
+
+    protected virtual void Attack()
+    {
+        if (Time.time < attackTime) return;
+
+        attackTime = Time.time + 1 / attackRate;
+        anim.SetTrigger("Attack");
     }
 
     private void Move()
@@ -42,6 +59,10 @@ public class EnemyIA : LifeController
 
         destiny = Point.instance.transform.position;
         agent.SetDestination(destiny);
+
+        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && !isFinished)
+            if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                isFinished = true;
     }
 
     private void Animations()

@@ -874,8 +874,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 800470632101586031, guid: 732513503709ad44eacf80ac2f5cc68b,
         type: 3}
+      propertyPath: maxLife
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 800470632101586031, guid: 732513503709ad44eacf80ac2f5cc68b,
+        type: 3}
+      propertyPath: attackRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 800470632101586031, guid: 732513503709ad44eacf80ac2f5cc68b,
+        type: 3}
       propertyPath: stoppingDistance
-      value: 7
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351315828096357407, guid: 732513503709ad44eacf80ac2f5cc68b,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5482306903969547803, guid: 732513503709ad44eacf80ac2f5cc68b,
         type: 3}
