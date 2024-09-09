@@ -19,9 +19,11 @@ public class EnemyIA : LifeController
     private float attackTime;
     private bool pointDestroyed;
 
-    [Header("NavMesh Variables")]
+    [Header("Components")]
     [SerializeField] private Animator anim;
     private NavMeshAgent agent;
+
+
     private Vector3 destiny;
     private bool isFinished;
 
