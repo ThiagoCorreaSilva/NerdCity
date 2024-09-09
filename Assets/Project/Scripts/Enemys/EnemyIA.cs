@@ -6,12 +6,14 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyIA : LifeController
 {
+    public static EnemyIA instance;
+
     [Header("Movement System")]
     [SerializeField] protected float speed;
     [SerializeField] protected float stoppingDistance;
 
     [Header("Attack System")]
-    [SerializeField] protected float attackDamage;
+    public float attackDamage;
     [SerializeField] protected float attackRange;
     [SerializeField] private float attackRate;
     private float attackTime;
@@ -24,6 +26,8 @@ public class EnemyIA : LifeController
 
     protected virtual void Awake()
     {
+        instance = this;
+
         agent = GetComponent<NavMeshAgent>();
     }
 
@@ -42,7 +46,7 @@ public class EnemyIA : LifeController
         Animations();
         Move();
 
-        if (isFinished && !isDeath) Attack();
+        if (isFinished && !isDeath && Point.instance.gameObject.activeSelf) Attack();
     }
 
     protected virtual void Attack()

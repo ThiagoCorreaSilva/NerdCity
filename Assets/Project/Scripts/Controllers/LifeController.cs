@@ -14,14 +14,14 @@ public class LifeController : MonoBehaviour
         currentLife = maxLife;
     }
 
-    protected virtual void TakeDamage(float _damage)
+    public virtual void TakeDamage(float _damage)
     {
         currentLife = Mathf.Max(currentLife - _damage, 0f);
 
         if (currentLife == 0) Death();
     }
 
-    protected virtual void ReceiveHeal(float _heal)
+    public virtual void ReceiveHeal(float _heal)
     {
         currentLife = Mathf.Min(currentLife + _heal, maxLife);
     }
@@ -29,5 +29,6 @@ public class LifeController : MonoBehaviour
     private void Death()
     {
         isDeath = true;
+        gameObject.SetActive(false);
     }
 }
