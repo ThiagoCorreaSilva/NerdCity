@@ -1,0 +1,203 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2889741540739261778
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7210119567697437513, guid: ebdc5840e6318b4478a5a8f7a82c0ad3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210119567697437513, guid: ebdc5840e6318b4478a5a8f7a82c0ad3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210119567697437513, guid: ebdc5840e6318b4478a5a8f7a82c0ad3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210119567697437513, guid: ebdc5840e6318b4478a5a8f7a82c0ad3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210119567697437513, guid: ebdc5840e6318b4478a5a8f7a82c0ad3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210119567697437513, guid: ebdc5840e6318b4478a5a8f7a82c0ad3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210119567697437513, guid: ebdc5840e6318b4478a5a8f7a82c0ad3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210119567697437513, guid: ebdc5840e6318b4478a5a8f7a82c0ad3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210119567697437513, guid: ebdc5840e6318b4478a5a8f7a82c0ad3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7210119567697437513, guid: ebdc5840e6318b4478a5a8f7a82c0ad3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8244188996280604020, guid: ebdc5840e6318b4478a5a8f7a82c0ad3,
+        type: 3}
+      propertyPath: m_Name
+      value: KnightEnemy Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7210119567697437513, guid: ebdc5840e6318b4478a5a8f7a82c0ad3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4909198757565173349}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8244188996280604020, guid: ebdc5840e6318b4478a5a8f7a82c0ad3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 800470632101586031}
+  m_SourcePrefab: {fileID: 100100000, guid: ebdc5840e6318b4478a5a8f7a82c0ad3, type: 3}
+--- !u!4 &5482306903969547803 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7210119567697437513, guid: ebdc5840e6318b4478a5a8f7a82c0ad3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2889741540739261778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6517643969458434086 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8244188996280604020, guid: ebdc5840e6318b4478a5a8f7a82c0ad3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2889741540739261778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &800470632101586031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6517643969458434086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e656dde0f828f0148af06fe34c03e9c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 6
+  stoppingDistance: 2
+  anim: {fileID: 1351315828096357407}
+--- !u!1001 &4875783488517400974
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5482306903969547803}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 4043b2909452e744f9224ec4e4279e60,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4043b2909452e744f9224ec4e4279e60,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4043b2909452e744f9224ec4e4279e60,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4043b2909452e744f9224ec4e4279e60,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4043b2909452e744f9224ec4e4279e60,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4043b2909452e744f9224ec4e4279e60,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4043b2909452e744f9224ec4e4279e60,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4043b2909452e744f9224ec4e4279e60,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4043b2909452e744f9224ec4e4279e60,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4043b2909452e744f9224ec4e4279e60,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4043b2909452e744f9224ec4e4279e60,
+        type: 3}
+      propertyPath: m_Name
+      value: Knight D Pelegrini@T-Pose
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 4043b2909452e744f9224ec4e4279e60,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 87a884141e689a74688c78c4ccbeb8c3, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 4043b2909452e744f9224ec4e4279e60,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+        'mixamorig:LeftHandThumb2'\n\tTransform 'mixamorig:LeftHandIndex1'\n\tTransform
+        'mixamorig:LeftHandPinky2'\n\tTransform 'mixamorig:RightHandRing2'\n\tTransform
+        'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform 'mixamorig:LeftHandThumb3'\n\tTransform
+        'mixamorig:RightArm'\n\tand more ...\n\tFrom animation clip 'Idle'\n\tFrom
+        animation clip 'Run'\n\tFrom animation clip 'Death'\n\tFrom animation clip
+        'Death'"
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4043b2909452e744f9224ec4e4279e60, type: 3}
+--- !u!95 &1351315828096357407 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 4043b2909452e744f9224ec4e4279e60,
+    type: 3}
+  m_PrefabInstance: {fileID: 4875783488517400974}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4909198757565173349 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4043b2909452e744f9224ec4e4279e60,
+    type: 3}
+  m_PrefabInstance: {fileID: 4875783488517400974}
+  m_PrefabAsset: {fileID: 0}
