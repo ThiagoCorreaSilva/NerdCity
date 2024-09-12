@@ -15,14 +15,22 @@ public class TowerPlacing : MonoBehaviour
     [SerializeField] private Button unlockTowerButton;
     [SerializeField] private Button closeUnlockMenu;
     [SerializeField] private Button closeTowerMenu;
+    private Canvas canvas;
     private bool isUnlocked;
     private bool haveTower;
 
     [Header("Place Variables")]
     [SerializeField] private int unlockPrice;
 
+    private void Awake()
+    {
+        canvas = GetComponentInChildren<Canvas>();
+
+    }
+
     private void Start()
     {
+        canvas.gameObject.SetActive(false);
         towersMenu.SetActive(false);
         unlockTowerPopUp.SetActive(false);
 
@@ -30,45 +38,38 @@ public class TowerPlacing : MonoBehaviour
         closeTowerMenu.onClick.AddListener(() => towersMenu.SetActive(false));
         closeUnlockMenu.onClick.AddListener(() => unlockTowerPopUp.SetActive(false));
 
-        unlockPriceTXT.text = "To unlock this place you need: " + unlockPrice + " souls";
-
         foreach (Button _button in attackTowers.GetComponentsInChildren<Button>())
         {
             _button.onClick.AddListener(() => BuyTower(_button.GetComponent<ButtonTower>().towerPrefab, _button.GetComponent<ButtonTower>().towerPrice));
         }
     }
 
-    private void Update()
+    private void OnMouseDown()
     {
         if (haveTower) return;
 
-        if (Input.GetButtonDown("Fire1"))
+        canvas.gameObject.SetActive(true);
+
+        if (!isUnlocked)
         {
-            Ray _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(_ray, out RaycastHit _hit, 1000f))
-            {
-                if (_hit.collider.gameObject.layer == LayerMask.NameToLayer("Placeabled"))
-                {
-                    Debug.Log("Colisao");
-
-                    if (!isUnlocked)
-                    {
-                        towersMenu.SetActive(false);
-                        unlockTowerPopUp.SetActive(true);
-                    }
-
-                    else towersMenu.SetActive(true);
-                }
-            }
+            unlockPriceTXT.text = "To unlock this place you need: " + unlockPrice + " souls";
+            unlockTowerPopUp.SetActive(true);
+        }
+        else
+        {
+            towersMenu.SetActive(true);
         }
     }
 
     private void UnlockTower()
     {
-        isUnlocked = true;
+        PlayerStatus.instance.RemoveSouls(unlockPrice);
+
         unlockTowerPopUp.SetActive(false);
         towersMenu.SetActive(true);
+        isUnlocked = true;
+
+        Debug.Log("Lugar desbloqueada");
     }
 
     private void BuyTower(GameObject _tower, int _price)
@@ -76,7 +77,7 @@ public class TowerPlacing : MonoBehaviour
         Debug.Log("Price is: " + _price + "tower is: " + _tower.name);
         towersMenu.SetActive(false);
 
-        Instantiate(_tower, towerPos.position, Quaternion.identity);
+        Instantiate(_tower, new Vector3(towerPos.position.x, towerPos.position.y + 0.5f, towerPos.position.z), Quaternion.identity);
         haveTower = true;
     }
 }
