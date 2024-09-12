@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TowerPlacing : MonoBehaviour
+public class TowerPlacing2 : MonoBehaviour
 {
     [SerializeField] private GameObject towerPrefab;
     [SerializeField] private GameObject towerSpawned;
