@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class TowerPlacing : MonoBehaviour
 {
@@ -25,7 +26,6 @@ public class TowerPlacing : MonoBehaviour
     private void Awake()
     {
         canvas = GetComponentInChildren<Canvas>();
-
     }
 
     private void Start()
@@ -35,8 +35,8 @@ public class TowerPlacing : MonoBehaviour
         unlockTowerPopUp.SetActive(false);
 
         unlockTowerButton.onClick.AddListener(UnlockTower);
-        closeTowerMenu.onClick.AddListener(() => towersMenu.SetActive(false));
-        closeUnlockMenu.onClick.AddListener(() => unlockTowerPopUp.SetActive(false));
+        closeTowerMenu.onClick.AddListener(CloseUI);
+        closeUnlockMenu.onClick.AddListener(CloseUI);
 
         foreach (Button _button in attackTowers.GetComponentsInChildren<Button>())
         {
@@ -61,6 +61,13 @@ public class TowerPlacing : MonoBehaviour
         }
     }
 
+    private void CloseUI()
+    {
+        canvas.gameObject.SetActive(false);
+        towersMenu.SetActive(false);
+        unlockTowerPopUp.SetActive(false);
+    }
+
     private void UnlockTower()
     {
         PlayerStatus.instance.RemoveSouls(unlockPrice);
@@ -74,7 +81,6 @@ public class TowerPlacing : MonoBehaviour
 
     private void BuyTower(GameObject _tower, int _price)
     {
-        Debug.Log("Price is: " + _price + "tower is: " + _tower.name);
         towersMenu.SetActive(false);
 
         Instantiate(_tower, new Vector3(towerPos.position.x, towerPos.position.y + 0.5f, towerPos.position.z), Quaternion.identity);

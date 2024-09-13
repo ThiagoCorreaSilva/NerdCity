@@ -13,9 +13,11 @@ public class EnemyIA : LifeController
     [SerializeField] protected float stoppingDistance;
 
     [Header("Attack System")]
-    public float attackDamage;
+    [SerializeField] protected Transform attackPos;
+    [SerializeField] protected LayerMask targetLayer;
     [SerializeField] protected float attackRange;
     [SerializeField] private float attackRate;
+    public float attackDamage;
     private float attackTime;
     private bool pointDestroyed;
 
@@ -54,12 +56,23 @@ public class EnemyIA : LifeController
         if (!Point.instance.gameObject.activeSelf) pointDestroyed = true;
     }
 
-    protected virtual void Attack()
+    public virtual void Attack()
     {
         if (Time.time < attackTime) return;
 
         attackTime = Time.time + 1 / attackRate;
         anim.SetTrigger("Attack");
+
+        var _hits = Physics.OverlapSphere(
+            attackPos.position,
+            attackRange,
+            targetLayer
+            );
+
+        foreach (var _hit in _hits)
+        {
+            _hit.GetComponent<LifeController>().TakeDamage(attackDamage);
+        }
     }
 
     private void Move()
