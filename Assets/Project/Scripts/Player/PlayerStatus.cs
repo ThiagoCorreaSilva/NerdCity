@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerStatus : MonoBehaviour
 {
     public static PlayerStatus instance;
 
-    [Header("Player Resources")]
-    public Dictionary<string, int> playerResouces = new Dictionary<string, int>();
+    [Header("Player Status")]
+    public SerializedDictionary<string, int> playerResouces = new SerializedDictionary<string, int>();
 
     [Header("UI")]
     [SerializeField] private TMP_Text soulsTXT;
