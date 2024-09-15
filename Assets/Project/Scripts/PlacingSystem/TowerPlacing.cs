@@ -70,13 +70,14 @@ public class TowerPlacing : MonoBehaviour
 
     private void UnlockTower()
     {
-        PlayerStatus.instance.RemoveSouls(unlockPrice);
+        if (PlayerStatus.instance.playerResouces["Soul"] - unlockPrice <= 0) return;
+        PlayerStatus.instance.RemoveResource("Soul" ,unlockPrice);
 
         unlockTowerPopUp.SetActive(false);
         towersMenu.SetActive(true);
         isUnlocked = true;
 
-        Debug.Log("Lugar desbloqueada");
+        Debug.Log("Lugar desbloqueado");
     }
 
     private void BuyTower(GameObject _tower, int _price)
