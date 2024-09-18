@@ -6,21 +6,21 @@ using UnityEngine.UI;
 
 public class TowerInfo : MonoBehaviour
 {
-    [Header("UI")]
-    [SerializeField] private GameObject infoMenu;
-    [SerializeField] private Button closeMenu;
-    [SerializeField] private TMP_Text towerNameTXT;
-    [SerializeField] private TMP_Text towerLevelTXT;
-    [SerializeField] private TMP_Text towerDamageTXT;
-    [SerializeField] private Image towerImage;
-    private Canvas canvas;
-    private string[] text, text2;
-
     [Header("Tower Variables")]
-    [SerializeField] private string towerName;
-    [SerializeField] private float towerDamage;
-    [SerializeField] private int towerLevel;
-    [SerializeField] private int maxTowerLevel;
+    [SerializeField] protected string towerName;
+    [SerializeField] protected float towerDamage;
+    [SerializeField] protected int towerLevel;
+    [SerializeField] protected int maxTowerLevel;
+
+    [Header("UI")]
+    [SerializeField] protected GameObject infoMenu;
+    [SerializeField] protected Button closeMenu;
+    [SerializeField] protected TMP_Text towerNameTXT;
+    [SerializeField] protected TMP_Text towerLevelTXT;
+    [SerializeField] protected TMP_Text towerDamageTXT;
+    [SerializeField] protected Image towerImage;
+    protected Canvas canvas;
+    private string[] text, text2;
 
     private void Awake()
     {
@@ -45,7 +45,12 @@ public class TowerInfo : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L)) LevelUp();
+        // APENAS PARA TESTAR O METODO LEVELUP
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Debug.Log("Level aumentado");
+            LevelUp();
+        }
     }
 
     private void OnMouseDown()
@@ -66,7 +71,7 @@ public class TowerInfo : MonoBehaviour
         if (towerLevel == maxTowerLevel) return;
 
         towerLevel++;
-        towerDamage++;
+        towerDamage += Mathf.RoundToInt(towerDamage + 6 * 1.5f);
 
         towerLevelTXT.text = text[0] + " " + towerLevel.ToString();
         towerDamageTXT.text = text2[0] + " " + towerDamage.ToString();
