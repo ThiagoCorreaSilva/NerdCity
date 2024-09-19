@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class TowerInfo : MonoBehaviour
 {
@@ -20,14 +21,14 @@ public class TowerInfo : MonoBehaviour
     [SerializeField] protected TMP_Text towerDamageTXT;
     [SerializeField] protected Image towerImage;
     protected Canvas canvas;
-    private string[] text, text2;
+    protected string[] text, text2;
 
     private void Awake()
     {
        canvas = GetComponentInChildren<Canvas>(); 
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         canvas.gameObject.SetActive(false);
         infoMenu.SetActive(false);
@@ -43,7 +44,7 @@ public class TowerInfo : MonoBehaviour
         towerDamageTXT.text = text2[0] + " " + towerDamage.ToString();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         // APENAS PARA TESTAR O METODO LEVELUP
         if (Input.GetKeyDown(KeyCode.L))
@@ -51,12 +52,19 @@ public class TowerInfo : MonoBehaviour
             Debug.Log("Level aumentado");
             LevelUp();
         }
+
+        if (Input.GetButtonDown("Fire1") && !EventSystem.current.IsPointerOverGameObject() && canvas.gameObject.activeSelf)
+        {
+            canvas.gameObject.SetActive(false);
+            Debug.Log("Fora de um objeto");
+        }
     }
 
     private void OnMouseDown()
     {
         canvas.gameObject.SetActive(true);
         infoMenu.SetActive(true);
+
         Debug.Log("Clicado");
     }
 

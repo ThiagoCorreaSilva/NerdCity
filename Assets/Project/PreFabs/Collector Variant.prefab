@@ -826,7 +826,7 @@ MonoBehaviour:
   woodPath: {fileID: 5264351759226796783}
   stonePath: {fileID: 1538766718969585162}
   updateInfo: {fileID: 2312277252201060367}
-  resourcerRate: 10
+  resourcerRate: 1
   cycleTime: 2
   path: 0
 --- !u!1 &3203129472317563345 stripped

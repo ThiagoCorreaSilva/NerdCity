@@ -15,16 +15,20 @@ public class CollectorTower : TowerInfo
     [SerializeField] private int path;
     private bool started;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         woodPath.onClick.AddListener(WoodPath);
         stonePath.onClick.AddListener(StonePath);
 
         updateInfo.SetActive(false);
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
         if (started)
         {
             started = false;
@@ -63,5 +67,15 @@ public class CollectorTower : TowerInfo
 
         yield return new WaitForSeconds(cycleTime);
         StartCoroutine(GiveResource());
+    }
+
+    protected override void LevelUp()
+    {
+        if (towerLevel == maxTowerLevel && path == 0) return;
+
+        towerLevel++;
+        towerLevelTXT.text = text[0] + " " + towerLevel.ToString();
+
+        resourcerRate += Mathf.RoundToInt(resourcerRate * 1.2f);
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class TowerPlacing : MonoBehaviour
@@ -40,6 +41,17 @@ public class TowerPlacing : MonoBehaviour
         foreach (Button _button in attackTowers.GetComponentsInChildren<Button>())
         {
             _button.onClick.AddListener(() => BuyTower(_button.GetComponent<ButtonTower>().towerPrefab, _button.GetComponent<ButtonTower>().towerPrice));
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Fire1") && !EventSystem.current.IsPointerOverGameObject())
+        {
+            if (!canvas.gameObject.activeSelf) return;
+
+            canvas.gameObject.SetActive(false);
+            Debug.Log("Fora de um objeto");
         }
     }
 
