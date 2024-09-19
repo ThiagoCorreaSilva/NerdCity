@@ -9,16 +9,21 @@ public class TowerInfo : MonoBehaviour
 {
     [Header("Tower Variables")]
     [SerializeField] protected string towerName;
+    [SerializeField] protected string resourceType;
     [SerializeField] protected float towerDamage;
     [SerializeField] protected int towerLevel;
     [SerializeField] protected int maxTowerLevel;
+    protected int levelRequires;
 
     [Header("UI")]
     [SerializeField] protected GameObject infoMenu;
+    [SerializeField] protected GameObject levelUpMenu;
     [SerializeField] protected Button closeMenu;
+    [SerializeField] protected Button levelUp;
     [SerializeField] protected TMP_Text towerNameTXT;
     [SerializeField] protected TMP_Text towerLevelTXT;
     [SerializeField] protected TMP_Text towerDamageTXT;
+    [SerializeField] protected TMP_Text levelUpRequiresTXT;
     [SerializeField] protected Image towerImage;
     protected Canvas canvas;
     protected string[] text, text2;
@@ -30,12 +35,18 @@ public class TowerInfo : MonoBehaviour
 
     protected virtual void Start()
     {
+        levelUpMenu.SetActive(false);
         canvas.gameObject.SetActive(false);
         infoMenu.SetActive(false);
+
         closeMenu.onClick.AddListener(CloseUI);
+        levelUp.onClick.AddListener(LevelUp);
 
         towerNameTXT.text = gameObject.name;
         towerNameTXT.text = towerName;
+
+        levelRequires = Random.Range(5, 20);
+        levelUpRequiresTXT.text = levelRequires.ToString();
 
         text = towerLevelTXT.text.Split(';');
         towerLevelTXT.text = text[0] + " " + towerLevel.ToString();
@@ -52,18 +63,13 @@ public class TowerInfo : MonoBehaviour
             Debug.Log("Level aumentado");
             LevelUp();
         }
-
-        if (Input.GetButtonDown("Fire1") && !EventSystem.current.IsPointerOverGameObject() && canvas.gameObject.activeSelf)
-        {
-            canvas.gameObject.SetActive(false);
-            Debug.Log("Fora de um objeto");
-        }
     }
 
-    private void OnMouseDown()
+    protected virtual void OnMouseDown()
     {
         canvas.gameObject.SetActive(true);
         infoMenu.SetActive(true);
+        levelUpMenu.SetActive(true);
 
         Debug.Log("Clicado");
     }
@@ -76,12 +82,25 @@ public class TowerInfo : MonoBehaviour
 
     protected virtual void LevelUp()
     {
-        if (towerLevel == maxTowerLevel) return;
+        if (towerLevel > maxTowerLevel)
+        {
+            towerLevelTXT.text = "MAX LEVEL";
+            levelUpMenu.SetActive(false);
+
+            return;
+        }
+
+        if (PlayerStatus.instance.playerResouces[resourceType] - levelRequires < 0) return;
 
         towerLevel++;
         towerDamage += Mathf.RoundToInt(towerDamage + 6 * 1.5f);
 
         towerLevelTXT.text = text[0] + " " + towerLevel.ToString();
         towerDamageTXT.text = text2[0] + " " + towerDamage.ToString();
+
+        levelRequires += Mathf.RoundToInt(levelRequires + (levelRequires * 1.64f) * 1.45f);
+        levelUpRequiresTXT.text = levelRequires.ToString();
+
+        PlayerStatus.instance.RemoveResource(resourceType, levelRequires);
     }
 }

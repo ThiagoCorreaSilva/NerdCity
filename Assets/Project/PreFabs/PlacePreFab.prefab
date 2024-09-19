@@ -1192,6 +1192,37 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &5804350564332637823
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1652025802953782005}
+  m_Layer: 7
+  m_Name: CheckCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1652025802953782005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5804350564332637823}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4344806623330591805}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5941631693628959092
 GameObject:
   m_ObjectHideFlags: 0
@@ -2754,6 +2785,7 @@ Transform:
   m_Children:
   - {fileID: 43540016256445695}
   - {fileID: 5942162834539225421}
+  - {fileID: 1652025802953782005}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5386385043460796640
@@ -2792,12 +2824,13 @@ MonoBehaviour:
   towersMenu: {fileID: 435699294313886674}
   unlockTowerPopUp: {fileID: 2004589552028805093}
   attackTowers: {fileID: 2055073319313572408}
+  canvasIsActive: {fileID: 5804350564332637823}
   towerPos: {fileID: 43540016256445695}
   unlockPriceTXT: {fileID: 5637119923834869178}
   unlockTowerButton: {fileID: 8368981571805150268}
   closeUnlockMenu: {fileID: 256175868145203363}
   closeTowerMenu: {fileID: 3945651117835295758}
-  unlockPrice: 10
+  unlockPrice: 20
 --- !u!1 &8628216429632772231
 GameObject:
   m_ObjectHideFlags: 0

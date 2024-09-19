@@ -44,17 +44,6 @@ public class TowerPlacing : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetButtonDown("Fire1") && !EventSystem.current.IsPointerOverGameObject())
-        {
-            if (!canvas.gameObject.activeSelf) return;
-
-            canvas.gameObject.SetActive(false);
-            Debug.Log("Fora de um objeto");
-        }
-    }
-
     private void OnMouseDown()
     {
         if (haveTower) return;
@@ -67,9 +56,7 @@ public class TowerPlacing : MonoBehaviour
             unlockTowerPopUp.SetActive(true);
         }
         else
-        {
             towersMenu.SetActive(true);
-        }
     }
 
     private void CloseUI()
@@ -81,7 +68,7 @@ public class TowerPlacing : MonoBehaviour
 
     private void UnlockTower()
     {
-        if (PlayerStatus.instance.playerResouces["Soul"] - unlockPrice <= 0) return;
+        if (PlayerStatus.instance.playerResouces["Soul"] - unlockPrice < 0) return;
         PlayerStatus.instance.RemoveResource("Soul" ,unlockPrice);
 
         unlockTowerPopUp.SetActive(false);

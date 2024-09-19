@@ -2870,16 +2870,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3075997453354089968, guid: 8d920d38adc1e9946b3b3f1923f0b70d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3898015352418595189, guid: 8d920d38adc1e9946b3b3f1923f0b70d,
-        type: 3}
-      propertyPath: unlockPrice
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 4344806623330591805, guid: 8d920d38adc1e9946b3b3f1923f0b70d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2974,11 +2964,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlacePreFab (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532870937510482958, guid: 8d920d38adc1e9946b3b3f1923f0b70d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

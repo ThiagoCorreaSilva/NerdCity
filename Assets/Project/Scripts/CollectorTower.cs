@@ -7,7 +7,6 @@ public class CollectorTower : TowerInfo
 {
     [SerializeField] private Button woodPath;
     [SerializeField] private Button stonePath;
-    [SerializeField] private GameObject updateInfo;
 
     [Header("Collector Variables")]
     [SerializeField] private int resourcerRate;
@@ -21,8 +20,6 @@ public class CollectorTower : TowerInfo
 
         woodPath.onClick.AddListener(WoodPath);
         stonePath.onClick.AddListener(StonePath);
-
-        updateInfo.SetActive(false);
     }
 
     protected override void Update()
@@ -32,30 +29,39 @@ public class CollectorTower : TowerInfo
         if (started)
         {
             started = false;
+            levelUpMenu.SetActive(true);
+
             StartCoroutine(GiveResource());
 
             Debug.Log("Comecou a coletar");
         }
     }
 
+    protected override void OnMouseDown()
+    {
+        base.OnMouseDown();
+
+        levelUpMenu.SetActive(false);
+    }
+
     private void WoodPath()
     {
         started = true;
         path = 1;
+        resourceType = "Wood";
 
         woodPath.gameObject.SetActive(false);
         stonePath.gameObject.SetActive(false);
-        updateInfo.SetActive(true);
     }
 
     private void StonePath()
     {
         started = true;
         path = 2;
+        resourceType = "Stone";
 
         woodPath.gameObject.SetActive(false);
         stonePath.gameObject.SetActive(false);
-        updateInfo.SetActive(true);
     }
 
     private IEnumerator GiveResource()
@@ -71,11 +77,23 @@ public class CollectorTower : TowerInfo
 
     protected override void LevelUp()
     {
-        if (towerLevel == maxTowerLevel && path == 0) return;
+        if (towerLevel > maxTowerLevel)
+        {
+            towerLevelTXT.text = "MAX LEVEL";
+            levelUpMenu.SetActive(false);
+
+            return;
+        }
+
+        if (PlayerStatus.instance.playerResouces[resourceType] - levelRequires < 0) return;
 
         towerLevel++;
         towerLevelTXT.text = text[0] + " " + towerLevel.ToString();
 
-        resourcerRate += Mathf.RoundToInt(resourcerRate * 1.2f);
+        levelRequires += Mathf.RoundToInt(levelRequires + (levelRequires * 2.14f) * 1.25f);
+        levelUpRequiresTXT.text = levelRequires.ToString();
+
+        PlayerStatus.instance.RemoveResource(resourceType, levelRequires);
+        resourcerRate += Mathf.RoundToInt((resourcerRate * 1.36f) * 2.3f + 5);
     }
 }
