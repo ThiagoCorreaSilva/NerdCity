@@ -90,10 +90,10 @@ public class CollectorTower : TowerInfo
         towerLevel++;
         towerLevelTXT.text = text[0] + " " + towerLevel.ToString();
 
-        levelRequires += Mathf.RoundToInt(levelRequires + (levelRequires * 2.14f) * 1.25f);
+        levelRequires = Mathf.RoundToInt(levelRequires + (levelRequires * 2.54f) * 3.65f);
         levelUpRequiresTXT.text = levelRequires.ToString();
 
         PlayerStatus.instance.RemoveResource(resourceType, levelRequires);
-        resourcerRate += Mathf.RoundToInt((resourcerRate * 1.36f) * 2.3f + 5);
+        resourcerRate = Mathf.RoundToInt(resourcerRate * 2.48f);
     }
 }
