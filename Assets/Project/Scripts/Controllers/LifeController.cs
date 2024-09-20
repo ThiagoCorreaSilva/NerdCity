@@ -6,7 +6,7 @@ public class LifeController : MonoBehaviour
 {
     [Header("Life Controller")]
     [SerializeField] protected float currentLife;
-    [SerializeField] protected float maxLife;
+    public float maxLife;
     protected bool isDeath;
 
     protected virtual void Start()
@@ -26,7 +26,7 @@ public class LifeController : MonoBehaviour
         currentLife = Mathf.Min(currentLife + _heal, maxLife);
     }
 
-    private void Death()
+    protected virtual void Death()
     {
         isDeath = true;
         gameObject.SetActive(false);

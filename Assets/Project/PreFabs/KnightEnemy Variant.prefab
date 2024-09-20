@@ -148,10 +148,15 @@ MonoBehaviour:
   currentLife: 0
   maxLife: 100
   speed: 6
+  maxSpeed: 7
   stoppingDistance: 3.7
-  attackDamage: 0
+  attackPos: {fileID: 0}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
   attackRange: 0
   attackRate: 0.5
+  attackDamage: 0
   anim: {fileID: 1351315828096357407}
 --- !u!1001 &4875783488517400974
 PrefabInstance:

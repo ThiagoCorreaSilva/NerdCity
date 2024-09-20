@@ -9,7 +9,8 @@ public class EnemyIA : LifeController
     public static EnemyIA instance;
 
     [Header("Movement System")]
-    [SerializeField] protected float speed;
+    public float speed;
+    public float maxSpeed;
     [SerializeField] protected float stoppingDistance;
 
     [Header("Attack System")]
@@ -40,7 +41,6 @@ public class EnemyIA : LifeController
     {
         base.Start();
 
-        agent.speed = speed;
         agent.stoppingDistance = stoppingDistance;
 
         destiny = transform.position;
@@ -51,9 +51,18 @@ public class EnemyIA : LifeController
         Animations();
         Move();
 
+        agent.speed = speed;
+
         if (isFinished && !isDeath && Point.instance.gameObject.activeSelf) Attack();
 
         if (!Point.instance.gameObject.activeSelf) pointDestroyed = true;
+    }
+
+    protected override void Death()
+    {
+        base.Death();
+
+        if (WaveController.instance.waveIsActive) WaveController.instance.enemysDeaths++;
     }
 
     public virtual void Attack()

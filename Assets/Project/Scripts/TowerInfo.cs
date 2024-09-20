@@ -24,11 +24,12 @@ public class TowerInfo : MonoBehaviour
     [SerializeField] protected TMP_Text towerLevelTXT;
     [SerializeField] protected TMP_Text towerDamageTXT;
     [SerializeField] protected TMP_Text levelUpRequiresTXT;
+    [SerializeField] protected TMP_Text updateInfoTXT;
     [SerializeField] protected Image towerImage;
     protected Canvas canvas;
     protected string[] text, text2;
 
-    private void Awake()
+    protected virtual void Awake()
     {
        canvas = GetComponentInChildren<Canvas>(); 
     }
@@ -53,16 +54,13 @@ public class TowerInfo : MonoBehaviour
 
         text2 = towerDamageTXT.text.Split(';');
         towerDamageTXT.text = text2[0] + " " + towerDamage.ToString();
+
+        updateInfoTXT.text = Mathf.RoundToInt(towerDamage + 6 * 1.5f).ToString() + " more damage in the next level";
     }
 
     protected virtual void Update()
     {
-        // APENAS PARA TESTAR O METODO LEVELUP
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Debug.Log("Level aumentado");
-            LevelUp();
-        }
+
     }
 
     protected virtual void OnMouseDown()
@@ -94,6 +92,7 @@ public class TowerInfo : MonoBehaviour
 
         towerLevel++;
         towerDamage += Mathf.RoundToInt(towerDamage + 6 * 1.5f);
+        updateInfoTXT.text = Mathf.RoundToInt(towerDamage + 6 * 1.5f).ToString() + " more damage in the next level";
 
         towerLevelTXT.text = text[0] + " " + towerLevel.ToString();
         towerDamageTXT.text = text2[0] + " " + towerDamage.ToString();
