@@ -95,6 +95,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8606868485993205198, guid: 941e6638d95c52f4fbbc7952f6ed4753,
         type: 3}
+      propertyPath: nextLevelObject.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8606868485993205198, guid: 941e6638d95c52f4fbbc7952f6ed4753,
+        type: 3}
       propertyPath: levelUpRequires.Array.data[0]
       value: 20
       objectReference: {fileID: 0}

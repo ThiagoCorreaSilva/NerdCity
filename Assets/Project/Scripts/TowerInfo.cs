@@ -8,6 +8,7 @@ using UnityEngine.EventSystems;
 public class TowerInfo : MonoBehaviour
 {
     [Header("Tower Variables")]
+    [SerializeField] protected GameObject[] nextLevelObject;
     [SerializeField] protected string towerName;
     [SerializeField] protected string resourceType;
     [SerializeField] protected float towerDamage;
@@ -60,7 +61,7 @@ public class TowerInfo : MonoBehaviour
 
     protected virtual void Update()
     {
-
+        if (WaveController.instance.waveIsActive) CloseUI();
     }
 
     protected virtual void OnMouseDown()
@@ -91,6 +92,7 @@ public class TowerInfo : MonoBehaviour
         if (PlayerStatus.instance.playerResouces[resourceType] - levelRequires < 0) return;
 
         towerLevel++;
+
         towerDamage += Mathf.RoundToInt(towerDamage + 6 * 1.5f);
         updateInfoTXT.text = Mathf.RoundToInt(towerDamage + 6 * 1.5f).ToString() + " more damage in the next level";
 

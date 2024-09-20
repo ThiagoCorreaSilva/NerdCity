@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class Knight : EnemyIA
 {
-    private void OnCollisionEnter(Collision _other)
+    private void OnTriggerEnter(Collider _other)
     {
+        Debug.Log("Colisao");
+
         if (_other.gameObject.tag == "Death")
         {
             Debug.Log("MORTO");

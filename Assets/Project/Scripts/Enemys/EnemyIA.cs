@@ -63,6 +63,7 @@ public class EnemyIA : LifeController
         base.Death();
 
         if (WaveController.instance.waveIsActive) WaveController.instance.enemysDeaths++;
+        PlayerStatus.instance.AdddResource("Soul", Random.Range(5, 20));
     }
 
     public virtual void Attack()

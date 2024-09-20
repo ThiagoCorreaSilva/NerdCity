@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CollectorTower : TowerInfo
 {
-    public static CollectorTower Instance;
+    public static CollectorTower instance;
 
     [SerializeField] private Button woodPath;
     [SerializeField] private Button stonePath;
@@ -14,13 +14,13 @@ public class CollectorTower : TowerInfo
     [SerializeField] private int resourcerRate;
     [SerializeField] private int cycleTime;
     [SerializeField] private int path;
-    private bool started;
+    public bool started;
 
     protected override void Awake()
     {
         base.Awake();
 
-        Instance = this;
+        instance = this;
     }
 
     protected override void Start()
@@ -35,6 +35,8 @@ public class CollectorTower : TowerInfo
 
     protected override void Update()
     {
+        base.Update();
+
         if (started)
         {
             started = false;
@@ -55,7 +57,6 @@ public class CollectorTower : TowerInfo
 
     private void WoodPath()
     {
-        started = true;
         path = 1;
         resourceType = "Wood";
 
@@ -65,7 +66,6 @@ public class CollectorTower : TowerInfo
 
     private void StonePath()
     {
-        started = true;
         path = 2;
         resourceType = "Stone";
 
@@ -98,8 +98,6 @@ public class CollectorTower : TowerInfo
 
     public IEnumerator GiveResource()
     {
-        if (!WaveController.instance.waveIsActive) yield break;
-
         if (path == 1)
             PlayerStatus.instance.AdddResource("Wood", resourcerRate);
         else

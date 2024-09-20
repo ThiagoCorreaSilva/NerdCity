@@ -812,8 +812,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27059805, y: -0.6532815, z: 0.27059805, w: 0.6532815}
-  m_LocalPosition: {x: 15, y: 20, z: -60}
+  m_LocalRotation: {x: -0.25408453, y: 0.65800184, z: -0.25244805, w: -0.6623781}
+  m_LocalPosition: {x: -4.9441967, y: 24.12979, z: -54.49261}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2435,7 +2435,7 @@ Transform:
   m_GameObject: {fileID: 1264394650}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.6635, y: 5.4264, z: -45.729}
+  m_LocalPosition: {x: -32.1, y: 1.5, z: -32.9}
   m_LocalScale: {x: 9.7846, y: 4.5074, z: 3.122}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3182,12 +3182,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597959964}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -32, y: 3.3854754, z: -68.088646}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -43.727257, y: -31.089394, z: -83.99298}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2018120171}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1630924394
 PrefabInstance:
@@ -3411,6 +3411,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832192015}
   m_CullTransparentMesh: 1
+--- !u!1 &1834413507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1834413508}
+  m_Layer: 0
+  m_Name: Enemys
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1834413508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834413507}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2018120171}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2018120170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2018120171}
+  m_Layer: 0
+  m_Name: --- WAVE SYSTEM ---
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2018120171
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2018120170}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.727255, y: 34.47487, z: 15.904334}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2080590568}
+  - {fileID: 1834413508}
+  - {fileID: 1597959965}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2075912709
 GameObject:
   m_ObjectHideFlags: 0
@@ -3570,12 +3635,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2080590567}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 695.58356, y: 385.75708, z: 5.6796474}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 683.8563, y: 351.28223, z: -10.224687}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2018120171}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2080590569
 MonoBehaviour:
@@ -3594,10 +3659,11 @@ MonoBehaviour:
   enemyPreFab: {fileID: 6517643969458434086, guid: 732513503709ad44eacf80ac2f5cc68b,
     type: 3}
   spawnPoint: {fileID: 1597959965}
+  enemysStorage: {fileID: 1834413508}
   waveCount: 0
   enemysSpawned: 0
   enemysDeaths: 0
-  maxEnemys: 30
+  maxEnemys: 10
   canStart: 0
   waveIsActive: 0
 --- !u!1660057539 &9223372036854775807
@@ -3615,7 +3681,6 @@ SceneRoots:
   - {fileID: 447262298}
   - {fileID: 1533273683}
   - {fileID: 529388897}
-  - {fileID: 1597959965}
   - {fileID: 1630924394}
-  - {fileID: 2080590568}
   - {fileID: 1264394654}
+  - {fileID: 2018120171}

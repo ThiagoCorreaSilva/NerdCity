@@ -44,9 +44,14 @@ public class TowerPlacing : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (WaveController.instance.waveIsActive) CloseUI();
+    }
+
     private void OnMouseDown()
     {
-        if (haveTower) return;
+        if (haveTower || WaveController.instance.waveIsActive) return;
 
         canvas.gameObject.SetActive(true);
 
@@ -81,6 +86,7 @@ public class TowerPlacing : MonoBehaviour
     private void BuyTower(GameObject _tower, int _price)
     {
         towersMenu.SetActive(false);
+        canvas.gameObject.SetActive(false);
 
         Instantiate(_tower, new Vector3(towerPos.position.x, towerPos.position.y + 0.5f, towerPos.position.z), Quaternion.identity);
         haveTower = true;

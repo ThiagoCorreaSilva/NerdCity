@@ -16,12 +16,14 @@ public class WaveController : MonoBehaviour
     [Header("Wave Variables")]
     [SerializeField] private GameObject enemyPreFab;
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Transform enemysStorage;
     [SerializeField] private int waveCount;
     [SerializeField] private int enemysSpawned;
     public int enemysDeaths;
     public int maxEnemys;
     public bool canStart;
     public bool waveIsActive;
+    private int enemysToPause;
 
     private void Awake()
     {
@@ -30,8 +32,10 @@ public class WaveController : MonoBehaviour
 
     private void Start()
     {
-        startWaveButton.onClick.AddListener(StartWave);
+        enemysToPause = Random.Range(5, 10);
         canStart = true;
+
+        startWaveButton.onClick.AddListener(StartWave);
 
         text = waveText.text.Split(';');
         waveText.text = text[0] + " " + waveCount;
@@ -49,6 +53,8 @@ public class WaveController : MonoBehaviour
         startWaveButton.gameObject.SetActive(false);
 
         waveIsActive = true;
+        if (FindObjectOfType<CollectorTower>()) CollectorTower.instance.started = true;
+
         StartCoroutine(WaveSystem());
     }
 
@@ -58,7 +64,17 @@ public class WaveController : MonoBehaviour
 
         for (int i = 0; i < maxEnemys; i++)
         {
+            if (enemysSpawned == enemysToPause)
+            {
+                Debug.Log("Pausa no spawn");
+
+                enemysToPause += Random.Range(4, 10);
+                yield return new WaitForSeconds(4);
+            }
+
             GameObject _enemy = Instantiate(enemyPreFab, spawnPoint.position, Quaternion.identity);
+
+            _enemy.transform.parent = enemysStorage;
             _enemy.GetComponent<EnemyIA>().speed = Random.Range(3, _enemy.GetComponent<EnemyIA>().maxSpeed);
             _enemy.GetComponent<EnemyIA>().maxLife = Random.Range(20, 100);
 
@@ -73,10 +89,11 @@ public class WaveController : MonoBehaviour
     public void WaveEnd()
     {
         startWaveButton.gameObject.SetActive(true);
+        if (FindObjectOfType<CollectorTower>()) StopCoroutine(CollectorTower.instance.GiveResource());
 
         enemysSpawned = 0;
         enemysDeaths = 0;
-        maxEnemys += 15;
+        maxEnemys += Random.Range(5, 10);
         waveIsActive = false;
 
         waveCount++;
