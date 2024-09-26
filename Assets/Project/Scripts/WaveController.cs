@@ -24,6 +24,7 @@ public class WaveController : MonoBehaviour
     public bool canStart;
     public bool waveIsActive;
     private int enemysToPause;
+    private CollectorTower collectorTower;
 
     private void Awake()
     {
@@ -53,8 +54,10 @@ public class WaveController : MonoBehaviour
         startWaveButton.gameObject.SetActive(false);
 
         waveIsActive = true;
-        if (FindObjectOfType<CollectorTower>()) CollectorTower.instance.started = true;
 
+        if (collectorTower == null) FindObjectOfType<CollectorTower>();
+
+        collectorTower.started = true;
         StartCoroutine(WaveSystem());
     }
 
@@ -89,7 +92,7 @@ public class WaveController : MonoBehaviour
     public void WaveEnd()
     {
         startWaveButton.gameObject.SetActive(true);
-        if (FindObjectOfType<CollectorTower>()) StopCoroutine(CollectorTower.instance.GiveResource());
+        if (collectorTower != null) StopCoroutine(collectorTower.GiveResource());
 
         enemysSpawned = 0;
         enemysDeaths = 0;
